@@ -1,31 +1,51 @@
-import { Button, Flex, Heading, Text } from "@chakra-ui/react"
+import { Button, Flex, Heading, Text, useBreakpointValue } from "@chakra-ui/react"
 import ProductsCarrousel from "./components/products-carrousel";
+import Gallery from "./components/gallery";
+import Footer from "./components/footer";
 
 const App = () => {
+  const isMobile = useBreakpointValue({ base: true, md: false });
   return (
-    <Flex
-      width={"100%"}
-      height={"100vh"}
-      px={10}
-      pt={"30px"}
-      backgroundRepeat={"no-repeat"}
-      backgroundPosition={"center"}
-      backgroundImage={"url(/img/Video.png)"}
-      backgroundSize={"cover"}
-      flexDir={"column"}
-    >
-      <Flex width={"100%"} justifyContent={"flex-end"} gap={4} mb={10}>
-        <Button textTransform={"uppercase"}>contáctanos por whatsapp</Button>
-        <Button textTransform={"uppercase"}>Danos tu opinión</Button>
+    <Flex as={"main"} flexDir={"column"} h={"100vh"}>
+      <Flex
+        h={"50vh"}
+        px={isMobile ? 5 : 100}
+        pb={"50px"}
+        pt={"30px"}
+        flexDir={"column"}
+        backgroundRepeat={"no-repeat"}
+        backgroundPosition={"center"}
+        backgroundImage={"url(/img/Video.png)"}
+        backgroundSize={"cover"}
+      >
+        <Flex
+          width={"100%"}
+          justifyContent={isMobile ? "center" : "flex-end"}
+          gap={isMobile ? 2 : 4}
+          mb={10}
+        >
+          <Button variant={"primary"}>contáctanos por whatsapp</Button>
+          <Button variant={"primary"}>danos tu opinión</Button>
+        </Flex>
+
+        <Heading as={"h1"} lineHeight={1} maxW={"643px"} mb={"40px"}>
+          Productos 100% orgánicos cultivados con amor
+        </Heading>
+
+        <Text textTransform={"uppercase"} fontSize={"24px"} maxW={"514px"}>
+          Alimentación consciente y saludable
+          <br />
+          Come sano
+          <br />
+          Come bonito
+        </Text>
+
+        <ProductsCarrousel />
       </Flex>
 
-      <Heading fontSize={"50px"} maxW={"643px"} lineHeight={1} mb={5}>Productos 100% orgánicos cultivados con amor</Heading>
+      <Gallery />
 
-      <Text textTransform={"uppercase"} fontSize={"24px"} maxW={"514px"}>
-        Alimentación consciente y saludable Come sano Come bonito
-      </Text>
-
-      <ProductsCarrousel />
+      <Footer />
     </Flex>
   );
 }

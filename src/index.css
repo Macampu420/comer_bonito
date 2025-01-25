@@ -1,6 +1,15 @@
 html, body, #root {
+  background: #E1E6E2;
   height: 100%;
-  /* margin: 0;
-  padding: 0; */
   box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Quicksand";
+  src: url("./assets/fonts/quicksand/Quicksand-Variable.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Questrial";
+  src: url("./assets/fonts/Questrial/Questrial-Regular.ttf") format("truetype");
 }

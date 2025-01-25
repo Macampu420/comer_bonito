@@ -1,16 +1,19 @@
-import { Flex, Heading, Image, Text } from "@chakra-ui/react"
+import { Flex, Heading, Image } from "@chakra-ui/react"
 import { Product } from "../types";
 
 const ProductCard = ({ product }: { product: Product }) => {
   return (
     <Flex
+      userSelect={"none"}
       position={"relative"}
       width={"300px"}
+      minW={"300px"}
       height={"300px"}
       flexDir={"column"}
       align={"center"}
     >
       <Image
+        userSelect={"none"}
         w={"100%"}
         h={"100%"}
         objectFit={"cover"}
@@ -32,13 +35,13 @@ const ProductCard = ({ product }: { product: Product }) => {
         border={"1px solid transparent"}
         bg={"rgba(194, 205, 197, 0.6)"}
       >
-        <Heading>
+        <Heading as={"h3"}>
           {product.name}
         </Heading>
 
-        <Text alignSelf={"flex-end"}>
+        <Heading as={"h4"} alignSelf={"flex-end"}>
           ${product.price} <strong>{product.unit}</strong>
-        </Text>
+        </Heading>
       </Flex>
     </Flex>
   );
