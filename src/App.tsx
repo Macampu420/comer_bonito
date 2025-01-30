@@ -1,4 +1,4 @@
-import { Button, Flex, Heading, Text, useBreakpointValue } from "@chakra-ui/react"
+import { Button, Flex, Heading, Img, Text, useBreakpointValue } from "@chakra-ui/react"
 import ProductsCarrousel from "./components/products-carrousel";
 import Gallery from "./components/gallery";
 import Footer from "./components/footer";
@@ -6,17 +6,35 @@ import Footer from "./components/footer";
 const App = () => {
   const isMobile = useBreakpointValue({ base: true, md: false });
   return (
-    <Flex as={"main"} flexDir={"column"} h={"100vh"}>
+    <Flex
+      as="main"
+      w="100%"
+      mx={0}
+      flexDir="column"
+      position="relative"
+    >
+      <Img
+        maxWidth={"100%"}
+        src={"/img/Video.png"}
+        alt={"video"}
+        position={"absolute"}
+        top={0}
+        zIndex={0}
+        h={"70vh"}
+        objectFit={"cover"}
+      />
+
       <Flex
-        h={"50vh"}
+        as={"section"}
+        maxW={"100%"}
+        width={"100%"}
+        zIndex={1}
         px={isMobile ? 5 : 100}
         pb={"50px"}
         pt={"30px"}
+        flexGrow={1}
         flexDir={"column"}
-        backgroundRepeat={"no-repeat"}
-        backgroundPosition={"center"}
-        backgroundImage={"url(/img/Video.png)"}
-        backgroundSize={"cover"}
+        backgroundColor={"transparent"}
       >
         <Flex
           width={"100%"}
@@ -24,8 +42,12 @@ const App = () => {
           gap={isMobile ? 2 : 4}
           mb={10}
         >
-          <Button variant={"primary"}>contáctanos por whatsapp</Button>
-          <Button variant={"primary"}>danos tu opinión</Button>
+          <Button variant={"primary"} fontSize={isMobile ? "12px" : "14px"}>
+            contáctanos por whatsapp
+          </Button>
+          <Button variant={"primary"} fontSize={isMobile ? "12px" : "14px"}>
+            danos tu opinión
+          </Button>
         </Flex>
 
         <Heading as={"h1"} lineHeight={1} maxW={"643px"} mb={"40px"}>
@@ -41,9 +63,9 @@ const App = () => {
         </Text>
 
         <ProductsCarrousel />
-      </Flex>
 
-      <Gallery />
+        <Gallery />
+      </Flex>
 
       <Footer />
     </Flex>

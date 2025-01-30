@@ -1,12 +1,13 @@
-import { Box, Flex, Grid, Heading } from "@chakra-ui/react";
+import { Box, Flex, Grid, Heading, useBreakpointValue } from "@chakra-ui/react";
 
 const Gallery = () => {
+  const isMobile = useBreakpointValue({ base: true, xl: false });
+  
   return (
-    <Flex flexGrow={1} pt={"450px"} flexDir={"column"} gap={5} align={"center"}>
+    <Flex pt={"50px"} flexDir={"column"} gap={5} align={"center"}>
       <Heading
+        as={isMobile ? "h2" : "h1"}
         maxW={"1390px"}
-        fontSize={"64px"}
-        color={"#2D3430"}
         textAlign={"center"}
         lineHeight={1}
       >
@@ -15,11 +16,10 @@ const Gallery = () => {
 
       <Box p={4} w="100%">
         <Grid
-          templateColumns="repeat(3, 1fr)" // Tres columnas iguales
-          gap={4} // Espaciado entre las cajas
-          autoRows="minmax(150px, auto)" // Altura adaptable para cada fila
+          templateColumns={isMobile ? "1fr" : "repeat(3, 1fr)"}
+          gap={4}
+          autoRows="minmax(150px, auto)"
         >
-          {/* Caja normal */}
           <Box
             bg="rgba(58, 56, 56, 0.3)"
             border="1px solid rgba(255, 255, 255, 0.2)"
@@ -68,7 +68,7 @@ const Gallery = () => {
             justifyContent="center"
             color="white"
             fontWeight="bold"
-            gridColumn="span 2" // Ocupa 2 columnas
+            gridColumn={isMobile ? "span 1" : "span 2"}
           >
             Caja 4 (2 columnas)
           </Box>
@@ -95,12 +95,11 @@ const Gallery = () => {
             justifyContent="center"
             color="white"
             fontWeight="bold"
-            gridColumn="span 2" // Ocupa 2 columnas
+            gridColumn={isMobile ? "span 1" : "span 2"}
           >
             Caja 6
           </Box>
 
-          {/* Caja que ocupa 2 filas */}
           <Box
             bg="rgba(58, 56, 56, 0.3)"
             border="1px solid rgba(255, 255, 255, 0.2)"
@@ -110,7 +109,7 @@ const Gallery = () => {
             justifyContent="center"
             color="white"
             fontWeight="bold"
-            gridRow="span 2" // Ocupa 2 filas
+            gridRow={isMobile ? "span 1" : "span 2"}
           >
             Caja 7
           </Box>
@@ -127,6 +126,7 @@ const Gallery = () => {
           >
             Caja 8
           </Box>
+
           <Box
             bg="rgba(58, 56, 56, 0.3)"
             border="1px solid rgba(255, 255, 255, 0.2)"
@@ -139,6 +139,7 @@ const Gallery = () => {
           >
             Caja 9
           </Box>
+
           <Box
             bg="rgba(58, 56, 56, 0.3)"
             border="1px solid rgba(255, 255, 255, 0.2)"
@@ -148,11 +149,10 @@ const Gallery = () => {
             justifyContent="center"
             color="white"
             fontWeight="bold"
-            gridColumn={"span 3"}
+            gridColumn={isMobile ? "span 1" : "span 3"}
           >
             Caja 10
           </Box>
-
         </Grid>
       </Box>
     </Flex>
