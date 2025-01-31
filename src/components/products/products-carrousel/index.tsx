@@ -1,13 +1,13 @@
 import { Flex, Heading, IconButton, Image, useBreakpointValue } from "@chakra-ui/react";
-import { products } from "./data";
 import ProductCard from "../product-card";
 import { useRef } from "react";
 import { FaRegArrowAltCircleLeft, FaRegArrowAltCircleRight } from "react-icons/fa";
+import { useProducts } from "../products-provider";
 
 const ProductsCarrousel = () => {
+  const { products } = useProducts();
   const isMobile = useBreakpointValue({ base: true, md: false });
-
-   const carouselRef = useRef<HTMLDivElement>(null);
+  const carouselRef = useRef<HTMLDivElement>(null);
 
   const scrollCarousel = (direction: "left" | "right") => {
     if (carouselRef.current) {

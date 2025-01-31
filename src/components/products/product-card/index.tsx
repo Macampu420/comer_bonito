@@ -1,7 +1,14 @@
 import { Flex, Heading, Image } from "@chakra-ui/react"
-import { Product } from "../types";
+import { Product } from "../../types";
+import { useProducts } from "../products-provider";
 
 const ProductCard = ({ product }: { product: Product }) => {
+  const {openProductModal} = useProducts();
+
+  const handleCardClick = () => {
+    openProductModal(product);
+  }
+
   return (
     <Flex
       userSelect={"none"}
@@ -11,6 +18,8 @@ const ProductCard = ({ product }: { product: Product }) => {
       height={"300px"}
       flexDir={"column"}
       align={"center"}
+      onClick={handleCardClick}
+      cursor={"pointer"}
     >
       <Image
         userSelect={"none"}

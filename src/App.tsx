@@ -1,18 +1,18 @@
 import { Button, Flex, Heading, Img, Text, useBreakpointValue } from "@chakra-ui/react"
-import ProductsCarrousel from "./components/products-carrousel";
 import Gallery from "./components/gallery";
 import Footer from "./components/footer";
+import ProductDetailModal from "./components/products/product-detail-modal";
+import ProductsCarrousel from "./components/products/products-carrousel";
+import { useProducts } from "./components/products/products-provider";
+import { BsChatRightText } from "react-icons/bs";
+import { VscFeedback } from "react-icons/vsc";
 
 const App = () => {
+  const {isProductModalOpen, closeProductModal, selectedProduct, handleWhastappClick} = useProducts();
   const isMobile = useBreakpointValue({ base: true, md: false });
+ 
   return (
-    <Flex
-      as="main"
-      w="100%"
-      mx={0}
-      flexDir="column"
-      position="relative"
-    >
+    <Flex as="main" w="100%" mx={0} flexDir="column" position="relative">
       <Img
         maxWidth={"100%"}
         src={"/img/Video.png"}
@@ -42,10 +42,20 @@ const App = () => {
           gap={isMobile ? 2 : 4}
           mb={10}
         >
-          <Button variant={"primary"} fontSize={isMobile ? "12px" : "14px"}>
+          <Button
+            variant={"primary"}
+            fontSize={isMobile ? "12px" : "14px"}
+            leftIcon={<BsChatRightText />}
+            onClick={handleWhastappClick}
+          >
             contáctanos por whatsapp
           </Button>
-          <Button variant={"primary"} fontSize={isMobile ? "12px" : "14px"}>
+          <Button
+            isDisabled
+            variant={"primary"}
+            fontSize={isMobile ? "12px" : "14px"}
+            leftIcon={<VscFeedback />}
+          >
             danos tu opinión
           </Button>
         </Flex>
@@ -68,6 +78,13 @@ const App = () => {
       </Flex>
 
       <Footer />
+
+      {isProductModalOpen && selectedProduct && (
+        <ProductDetailModal
+          onClose={closeProductModal}
+          product={selectedProduct}
+        />
+      )}
     </Flex>
   );
 }
