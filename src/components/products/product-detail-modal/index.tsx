@@ -18,8 +18,11 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
   return (
     <Modal isOpen onClose={onClose}>
       <ModalOverlay
+        h={"100vh"}
         bg="blackAlpha.300"
-        backdropFilter="blur(5px) hue-rotate(90deg)"
+        backdropFilter="auto"
+        backdropInvert="30%"
+        backdropBlur="8px"
       />
       <ModalContent
         mx={isMobile ? 4 : 0}

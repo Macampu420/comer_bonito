@@ -42,14 +42,12 @@ const ProductCard = ({ product }: { product: Product }) => {
         mb={3}
         borderRadius={"8px"}
         border={"1px solid transparent"}
-        bg={"rgba(194, 205, 197, 0.6)"}
+        bg={"rgba(194, 205, 197, 0.8)"}
       >
-        <Heading as={"h3"}>
-          {product.name}
-        </Heading>
+        <Heading as={"h4"} lineHeight={1}>{product.name}</Heading>
 
-        <Heading as={"h4"} alignSelf={"flex-end"}>
-          ${product.price} <strong>{product.unit}</strong>
+        <Heading as={"h5"} alignSelf={"flex-end"}>
+          ${product.price.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 })} <strong>{product.unit}</strong>
         </Heading>
       </Flex>
     </Flex>

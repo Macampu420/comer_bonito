@@ -18,7 +18,7 @@ const Footer = () => {
         bg="#C2CDC5"
         as="section"
         h={isMobile ? "auto" : "400px"}
-        px="32px"
+        px={isMobile ? "50px" : "150px"}
         py={isMobile ? "24px" : "0"}
         textAlign={isMobile ? "center" : "left"}
       >
@@ -33,43 +33,61 @@ const Footer = () => {
               <Heading fontSize={isMobile ? "20px" : "24px"}>
                 Nuestras Redes
               </Heading>
-              <Text>Instagram</Text>
-              <Text>Facebook</Text>
+              <Text
+                as={"a"}
+                href="https://www.instagram.com/casadelossuenossonson/"
+                target="_blank"
+                textDecoration={"underline"}
+              >
+                Instagram
+              </Text>
+              <Text
+                as={"a"}
+                href="https://www.facebook.com/casadelossuenossonson"
+                target="_blank"
+                textDecoration={"underline"}
+              >
+                Facebook
+              </Text>
             </Flex>
 
             <Flex flexDir="column" align={isMobile ? "center" : "flex-start"}>
               <Heading fontSize={isMobile ? "20px" : "24px"}>
                 Más proyectos
               </Heading>
-              <Text>Memoria</Text>
+              <Text
+                as={"a"}
+                href="https://casadelosuenos.netlify.app"
+                target="_blank"
+                textDecoration={"underline"}
+              >
+                Memorias plurales
+              </Text>
             </Flex>
           </Flex>
 
-          <Text maxW="400px" fontSize={isMobile ? "14px" : "16px"}>
-            Productos orgánicos cultivados en Sonsón, Antioquia. Vereda Aures La
-            Morelia - Finca Villa Aura
+          <Text maxW={isMobile ? "100vw !important" : "800px"} variant={"caption"}>
+            Sonsón es nuestro hogar, el regalo que la vida nos dio para SER dos
+            veces. Nuestra propuesta busca la conexión de las comunidades
+            campesinas y rurales con el territorio. Saber habitarlo desde el
+            cuidado es respetar sus ciclos naturales. No pensamos en explotar o
+            producir de manera forzosa y a gran escala. Creemos en la seguridad
+            y en la soberanía alimentaria y defendemos nuestro derecho a vivir
+            en paz.
+            <br/>
           </Text>
         </Flex>
 
-        {/* Logo y título */}
         <Flex
-          align="center"
+          justify="flex-end"
           gap={isMobile ? "20px" : "60px"}
           flexDir={isMobile ? "column" : "row"}
+          mt={isMobile ? "24px" : "0"}
         >
-          <Heading
-            fontSize={isMobile ? "36px" : "120px"}
-            maxW={isMobile ? "90%" : "700px"}
-            lineHeight={1}
-            textAlign="center"
-            background="linear-gradient(to top, #6B8274, #171C19)"
-            backgroundClip="text"
-            color="transparent"
-          >
-            Casa de los sueños
-          </Heading>
           <Image
-            src="/img/logo_corpo.svg"
+            minW={isMobile ? "80vw" : "auto"}
+            maxW={isMobile ? "100%" : "50%"}
+            src="/img/logo_corpo.png"
             alt="logo"
             objectFit="contain"
             boxSize={isMobile ? "80px" : "auto"}

@@ -1,25 +1,36 @@
-import { Button, Flex, Heading, Img, Text, useBreakpointValue } from "@chakra-ui/react"
+import { Button, Flex, Image, Img, Text, useBreakpointValue } from "@chakra-ui/react"
 import Gallery from "./components/gallery";
 import Footer from "./components/footer";
 import ProductDetailModal from "./components/products/product-detail-modal";
 import ProductsCarrousel from "./components/products/products-carrousel";
 import { useProducts } from "./components/products/products-provider";
 import { BsChatRightText } from "react-icons/bs";
-import { VscFeedback } from "react-icons/vsc";
 
 const App = () => {
   const {isProductModalOpen, closeProductModal, selectedProduct, handleWhastappClick} = useProducts();
   const isMobile = useBreakpointValue({ base: true, md: false });
  
   return (
-    <Flex as="main" w="100%" mx={0} flexDir="column" position="relative">
+    <Flex
+      alignSelf={"center"}
+      marginX={"auto"}
+      as="main"
+      w="100%"
+      maxW={"1800px"}
+      flexDir="column"
+      position="relative"
+    >
       <Img
         maxWidth={"100%"}
-        src={"/img/Video.png"}
+        minWidth={"100%"}
+        src={
+          "https://s3.us-east-2.amazonaws.com/casa-de-los-suenos.comer-bonito/fondo.jpg"
+        }
         alt={"video"}
         position={"absolute"}
         top={0}
         zIndex={0}
+        maxH={"700px"}
         h={"70vh"}
         objectFit={"cover"}
       />
@@ -39,10 +50,11 @@ const App = () => {
         <Flex
           width={"100%"}
           justifyContent={isMobile ? "center" : "flex-end"}
-          gap={isMobile ? 2 : 4}
+          gap={isMobile ? 1 : 4}
           mb={10}
         >
           <Button
+            w={"max-content"}
             variant={"primary"}
             fontSize={isMobile ? "12px" : "14px"}
             leftIcon={<BsChatRightText />}
@@ -50,26 +62,27 @@ const App = () => {
           >
             contáctanos por whatsapp
           </Button>
-          <Button
-            isDisabled
-            variant={"primary"}
-            fontSize={isMobile ? "12px" : "14px"}
-            leftIcon={<VscFeedback />}
-          >
-            danos tu opinión
-          </Button>
         </Flex>
 
-        <Heading as={"h1"} lineHeight={1} maxW={"643px"} mb={"40px"}>
-          Productos 100% orgánicos cultivados con amor
-        </Heading>
+       
+        <Image
+          maxW={"643px"}
+          mb={"40px"}
+          src={"/img/comer-bonito-blanco.png"}
+          alt={"Logo"}
+        />
 
-        <Text textTransform={"uppercase"} fontSize={"24px"} maxW={"514px"}>
-          Alimentación consciente y saludable
-          <br />
-          Come sano
-          <br />
-          Come bonito
+        <Text
+          color={"#fff"}
+          maxW={"514px"}
+          mt={isMobile ? "40px" : "0"}
+          mb={"40px"}
+        >
+          La consciencia por el medio ambiente y por nuestra salud están en la
+          siembra, cuidado y cosecha de los alimentos orgánicos. Se dejan de
+          lado pesticidas y fertilizantes sintéticos para darle paso a métodos
+          naturales que respeten el equilibrio de todos los seres que hacen
+          parte del territorio.
         </Text>
 
         <ProductsCarrousel />
